@@ -1,0 +1,72 @@
+<mat-card>
+    <h1>Set up a Direct Debit with [XYZ merchant]</h1>
+</mat-card>
+
+<mat-card>
+
+    <mat-horizontal-stepper #stepper linear>
+      
+        <mat-step label="Customer Details" [stepControl]="customerFormGroup"> 
+            <form [formGroup]="customerFormGroup">
+                <h2>Personal details</h2>
+                <mat-form-field>
+                    <input matInput formControlName="firstName" placeholder="First Name" />
+                </mat-form-field><br />
+                <mat-form-field>
+                    <input matInput formControlName="lastName" placeholder="Last Name" />
+                </mat-form-field><br />
+                <mat-form-field>
+                    <input matInput formControlName="email" placeholder="Email" />
+                </mat-form-field><br />
+                <button mat-raised-button color="primary" matStepperNext type="button">Next</button>
+            </form>
+        </mat-step>
+
+        <mat-step  label="Bank Account Details" [stepControl]="bankFormGroup"> 
+            <form [formGroup]="bankFormGroup">
+                <mat-form-field>
+                    <input matInput formControlName="accountName" placeholder="Account Name" />
+                </mat-form-field><br />
+                <mat-form-field>
+                    <input matInput formControlName="sortCode" placeholder="Sort Code" />
+                </mat-form-field><br />
+                <mat-form-field>
+                    <input matInput formControlName="accountNumber" placeholder="Account Number" />
+                </mat-form-field><br />
+                <h2>Options</h2>
+                <mat-checkbox formControlName="dualSignatureAccounts">More than one person is required to authorise Direct Debits?</mat-checkbox><br />
+                <button mat-raised-button color="primary" mat-button matStepperPrevious type="button">Back</button>
+                <button mat-raised-button color="primary" matStepperNext type="button">Next</button>
+            </form>
+        </mat-step>
+        
+        <mat-step label="Summary page">
+          <h2>Please verify your details before Submission</h2>
+          <mat-list>
+            <mat-list-item> <strong>First Name:     </strong> {{ this.customerFormGroup.value.firstName }} </mat-list-item>
+            <mat-list-item> <strong>Last Name:      </strong> {{ this.customerFormGroup.value.lastName  }} </mat-list-item>
+            <mat-list-item> <strong>Email:          </strong> {{ this.customerFormGroup.value.email     }} </mat-list-item>
+            <mat-list-item> <strong>Account Name:   </strong> {{ this.bankFormGroup.value.accountName   }} </mat-list-item>
+            <mat-list-item> <strong>Account Number: </strong> {{ this.bankFormGroup.value.sortCode      }} </mat-list-item>
+            <mat-list-item> <strong>Sort Code:      </strong> {{ this.bankFormGroup.value.accountNumber }} </mat-list-item>
+            <mat-list-item> <strong>Merchant Name  : </strong> XYZ Merchant      </mat-list-item>
+            <mat-list-item> <strong>Merchant Phone : </strong> 123456789         </mat-list-item>
+            <mat-list-item> <strong>Merchant email : </strong> info@merchant.com </mat-list-item>
+            <mat-list-item> <strong>Merchant Display Name on bank Statements :   </strong> XYZ Merchant </mat-list-item>
+            <mat-list-item> <b>NOTE: You may cancel this Direct Debit at any time by contacting [Merchant Name] or your bank.</b></mat-list-item>
+          </mat-list>
+          <button mat-raised-button color="primary" matStepperPrevious type="button">Back</button>
+          <button mat-raised-button color="accent" (click)="submit()">Submit</button>
+        </mat-step>
+
+      </mat-horizontal-stepper>
+  </mat-card>
+
+<mat-card>
+    <img src="https://support.gocardless.com/hc/article_attachments/360017130219/Direct_Debit_Guarantee.png" alt="Direct_Debit_Guarantee.png" width="100%" height="70%">
+</mat-card>
+
+<mat-card>
+  <h3>We use GoCardless to process your Direct Debit payments. More information on how GoCardless processes your personal data and your data protection rights, including your right to object, is available at <a href="https://gocardless.com/legal/privacy/">GoCardless Privacy</a>"</h3>
+</mat-card>
+        

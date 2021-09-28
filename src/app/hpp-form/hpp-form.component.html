@@ -1,0 +1,20 @@
+<mat-card>
+    <h1>Showcases Customer/Mandate creation via goCardless Hosted Payment Pages</h1>
+</mat-card>
+
+<mat-card>
+    <form [formGroup]="productFormGroup" >
+        <h2>Test</h2>
+        <mat-form-field>
+            <input matInput formControlName="product" placeholder="ABC Prodct" readonly />
+        </mat-form-field><br />
+        <mat-form-field>
+            <input matInput formControlName="price" placeholder="Subscription per month" readonly />
+        </mat-form-field><br />
+        <button mat-raised-button color="accent" (click)="submit()">Submit</button>
+    </form>
+</mat-card>
+
+<mat-card>
+  <h3>We use GoCardless to process your Direct Debit payments. More information on how GoCardless processes your personal data and your data protection rights, including your right to object, is available at <a href="https://gocardless.com/legal/privacy/">GoCardless Privacy</a>"</h3>
+</mat-card>
